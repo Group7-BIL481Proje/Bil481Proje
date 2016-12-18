@@ -54,6 +54,17 @@ public abstract class Strman {
      * @param appends an array of strings to append
      * @return full String
      */
+    public static String replaceBetween(String str1, String str2,int bas,int son) throws Exception{
+		String res="";
+		if((str1!=null)&&(str2!=null)&&(bas>=0)&&(son>=bas)&&(son<=str1.length())){
+			res=str1.substring(bas,son);
+			res=str1.replace(res, str2);
+		}
+		else
+			throw new IllegalArgumentException();
+		return res;
+	}
+
     public static String append(final String value, final String... appends) {
         return appendArray(value, appends);
     }
@@ -1303,3 +1314,4 @@ public abstract class Strman {
         return countSubstr(value.substring(offset), subStr, allowOverlapping, ++count);
     }
 }
+
