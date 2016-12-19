@@ -30,6 +30,16 @@ compile(group: 'com.shekhargulati', name: 'strman', version: '0.2.0')
 
 These are the available functions in current version of library:
 
+##replaceBetween
+
+Replaces a substring between given indexes of a String with another String
+
+```java
+import static strman.Strman.replaceBetween
+replaceBetween("helloworld","A",1,4)
+// result => "hAoworld"
+```
+ 
 ## append
 
 Appends Strings to value
@@ -66,7 +76,7 @@ Returns an array with strings between start and end.
 
 ```java
 import static strman.Strman.between
-between("[abc][def]", "[", "]")
+between("[abc]","[def]", "[", "]")
 // result => ["abc","def"]
 ```
 
