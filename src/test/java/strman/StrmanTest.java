@@ -42,6 +42,21 @@ import static strman.Strman.endsWith;
 import static strman.Strman.format;
 
 public class StrmanTest {
+	
+	@Test
+    public void replaceBetween_shouldReplaceSubstringsBetweenGivenIndexes() throws Exception {
+        assertThat(replaceBetween("elif","W",0,2), equalTo("Wif"));
+        assertThat(replaceBetween("elif","elif",0,4), equalTo("elif"));
+        assertThat(replaceBetween("elif","",0,2), equalTo("if"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void replaceBetween_shouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
+        replaceBetween(null,null,0,4);
+        replaceBetween(null,"wer",0,4);
+        replaceBetween("werw",null,0,4);
+        replaceBetween("el","A",0,4);
+    }
 
     @Test
     public void append_shouldAppendStringsToEndOfValue() throws Exception {
