@@ -45,7 +45,7 @@ public class StrmanTest {
 	
 	@Test
     public void replaceBetween_shouldReplaceSubstringsBetweenGivenIndexes() throws Exception {
-        assertThat(replaceBetween("elif","W",0,2), equalTo("Wif"));
+        assertThat(replaceBetween("elifel","W",0,2), equalTo("Wifel"));
         assertThat(replaceBetween("elif","elif",0,4), equalTo("elif"));
         assertThat(replaceBetween("elif","",0,2), equalTo("if"));
     }
@@ -55,7 +55,7 @@ public class StrmanTest {
         replaceBetween(null,null,0,4);
         replaceBetween(null,"wer",0,4);
         replaceBetween("werw",null,0,4);
-        replaceBetween("el","A",0,4);
+        replaceBetween("el","A",-1,4);
     }
 
     @Test
