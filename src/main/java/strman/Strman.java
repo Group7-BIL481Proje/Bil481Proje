@@ -55,16 +55,19 @@ public abstract class Strman {
      * @return res        String after replacement
      */
     public static String replaceBetween(String str1, String str2,int bas,int son) throws Exception{
-  		String res="";
+  		String res1="";
+  		String res2="";
+  		String res3="";
   		validate(str1, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
   		validate(str2, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
   		if((bas>=0)&&(son>=bas)&&(son<=str1.length())){
-  			res=str1.substring(bas,son);
-  			res=str1.replace(res, str2);
+  			res1=str1.substring(0,bas);
+  			res2=str1.substring(son);
+  			return append(res1,str2,res2);
   		}
   		else
   			throw new IllegalArgumentException();
-  		return res;
+  		//return res3;
   	}
     /**
      * Appends Strings to value
@@ -73,6 +76,13 @@ public abstract class Strman {
      * @param appends an array of strings to append
      * @return full String
      */
+
+    private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
+        if (predicate.test(value)) {
+            throw new IllegalArgumentException(supplier.get());
+        }
+    }
+    
     public static String append(final String value, final String... appends) {
         return appendArray(value, appends);
     }
@@ -1302,11 +1312,6 @@ public abstract class Strman {
     }
 
 
-    private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
-        if (predicate.test(value)) {
-            throw new IllegalArgumentException(supplier.get());
-        }
-    }
 
     private static long countSubstr(String value, String subStr, boolean allowOverlapping, long count) {
         int position = value.indexOf(subStr);
